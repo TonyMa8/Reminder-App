@@ -26,10 +26,16 @@ function Home(props) {
     });
     console.log(Tasks);
   }
+
+  function DeleteHandler(enteredTask) {
+    setTasks((prevTasks) => {
+      return prevTasks.filter((item) => item.task !== enteredTask.task);
+    });
+  }
   return (
     <div>
       <TaskForm onFormSubmition={saveFormSubmition} />;
-      <MainBody Data={Tasks} />;
+      <MainBody Data={Tasks} onDelete={DeleteHandler} />;
     </div>
   );
 }
